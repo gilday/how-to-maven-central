@@ -1,8 +1,12 @@
 language: java
 jdk: openjdk11
-before_install:
+before_script:
   - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
-install:
-  ./mvnw --settings .maven.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
 script:
-  ./mvnw --batch-mode --settings .maven.xml clean install -Prelease
+  ./mvnw --settings .maven.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+deploy:
+  - provider: script
+    script: ./mvnw --batch-mode --settings .maven.xml clean deploy -Prelease
+    on:
+      branch: master
+      tags: true

@@ -7,7 +7,7 @@
 
   <groupId>com.johnathangilday</groupId>
   <artifactId>how-to-maven-central</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
 
   <name>how-to-maven-central</name>
   <description>Sample project for demonstrating deployment to Maven Central</description>
