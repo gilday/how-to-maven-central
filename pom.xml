@@ -11,11 +11,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <junit.version>5.3.1</junit.version>
-    <junit.parallelism>4</junit.parallelism>
-    <parallel-test.nop>false</parallel-test.nop>
+    <maven.compiler.release>11</maven.compiler.release>
   </properties>
 
   <build>
@@ -114,6 +110,9 @@
                   <dependencyConvergence/>
                   <!-- Cannot use requirePluginVersions with maven-flatten-plugin -->
                   <!-- <requirePluginVersions/> -->
+                  <requireMavenVersion>
+                    <version>3.6.1</version>
+                  </requireMavenVersion>
                 </rules>
               </configuration>
               <goals>
