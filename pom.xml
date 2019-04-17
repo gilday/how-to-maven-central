@@ -9,6 +9,42 @@
   <artifactId>how-to-maven-central</artifactId>
   <version>1.0-SNAPSHOT</version>
 
+  <name>how-to-maven-central</name>
+  <description>Sample project for demonstrating deployment to Maven Central</description>
+  <url>https://github.com/gilday/how-to-maven-central</url>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:https://github.com/gilday/how-to-maven-central.git</connection>
+    <url>https://github.com/gilday/how-to-maven-central</url>
+  </scm>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+
+  <developers>
+    <developer>
+      <name>Johnathan Gilday</name>
+      <email>me@johnathangilday.com</email>
+      <organizationUrl>https://johnathangilday.com</organizationUrl>
+    </developer>
+  </developers>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>11</maven.compiler.release>
@@ -73,7 +109,6 @@
           <pomElements>
             <name/>
             <description/>
-            <organization/>
             <developers/>
             <scm/>
             <url/>
