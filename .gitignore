@@ -29,6 +29,7 @@ hs_err_pid*
 # Maven
 
 .flattened-pom.xml
+.flattened-pom.xml.asc
 
 target/
 pom.xml.tag

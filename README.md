@@ -38,3 +38,14 @@ configure releases to Maven Central and should work for most OSS projects.
 There are plenty of blog posts and guides on how to configure the
 nexus-staging-maven-plugin in this configuration. Tag `v1.1` of this project was
 deployed using this configuration.
+
+## Manual Staging Bundle Creation and Deployment
+
+Examples using the [Manual Staging Bundle Creation and
+Deployment](https://central.sonatype.org/pages/manual-staging-bundle-creation-and-deployment.html)
+workflow are less common. In this workflow, users use scripts to manually create
+and deploy artifacts to the staging repository in OSSRH. The
+nexus-staging-maven-plugin is still involved, but instead of being integrated
+into a Maven build, this workflow calls for using the plugin's "rc" goals to
+manually open, close, release, list, and drop staging repositories. The
+`deploy.sh` shows an example of using these goals in a script.

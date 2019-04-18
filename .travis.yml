@@ -1,12 +1,9 @@
 language: java
-jdk: openjdk11
-before_script:
+dist: xenial # uses jdk 11 by default
+install:
+  - ./mvnw --batch-mode --settings .maven.xml install
+before_deploy:
   - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
-script:
-  ./mvnw --settings .maven.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
 deploy:
-  - provider: script
-    script: ./mvnw --batch-mode --settings .maven.xml clean deploy -Prelease
-    on:
-      branch: master
-      tags: true
+  provider: script
+  script: bash build-and-deploy.sh
