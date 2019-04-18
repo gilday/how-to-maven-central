@@ -1,12 +1,13 @@
 language: java
-jdk: openjdk11
-before_script:
-  - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+dist: xenial # uses jdk 11 by default
 script:
-  ./mvnw --settings .maven.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+  ./mvnw --batch-mode --settings .maven.xml install
+before_deploy:
+  - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
 deploy:
-  - provider: script
-    script: ./mvnw --batch-mode --settings .maven.xml clean deploy -Prelease
-    on:
-      branch: master
-      tags: true
+  skip_cleanup: true
+  provider: script
+  script: ./deploy.sh --drop-existing
+  on:
+    branch: master
+    tags: true
