@@ -5,9 +5,10 @@ script:
 before_deploy:
   - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
 deploy:
-  skip_cleanup: true
   provider: script
-  script: ./deploy.sh --drop-existing
+  script:
+    - ./mvnw --batch-mode --settings .maven.xml clean install
+    - ./deploy.sh --drop-existing
   on:
     branch: master
     tags: true
